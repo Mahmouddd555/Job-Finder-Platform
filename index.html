@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Finder</title>
+
+  <link rel="stylesheet" href="style/style2.css">
+  <script src="js/index.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">🎯 Job Finder</a>
+      </div>
+    <div class="nav-links">
+      <a href="job-Search.html"> Search Jobs |</a>
+      <a href="my-applications.html" id="userNavLink" style="display: none;"> My Applications |</a>
+      <a href="applied_jobs.html" id="adminNavLink" style="display: none;"> Candidates |</a>
+      <a href="admin_dashboard.html" id="adminDashboardNav" style="display: none;"> Admin Dashboard |</a>
+      <a href="admin-jobs.html" id="adminJobsNav" style="display: none;"> Manage Jobs |</a>
+    </div>
+      <div id="authArea" class="auth">
+        <a href="login.html" class="login">Login | </a>
+        <a href="signup.html" class="signup"> Sign Up</a>
+      </div>
+    </div>
+  </nav>
+  <header class="hero">
+    <h1>Find Your Dream Job Today!</h1>
+
+    <form action="job-Search.html" class="hero-search">
+      <input type="text" placeholder="Enter job title">
+      <button type="submit">Search Jobs</button>
+    </form>
+  </header>
+
+  <section class="about">
+    <h2>About Job Finder</h2>
+    <p>This website allows users to search for jobs and apply easily, while company admins can post and manage job
+      opportunities.</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <h2 class="counter" data-target="1500">0</h2>
+      <p>Job Opportunities</p>
+    </div>
+    <div class="stat">
+      <h2 class="counter" data-target="850">0</h2>
+      <p>Active Companies</p>
+    </div>
+    <div class="stat">
+      <h2 class="counter" data-target="12000">0</h2>
+      <p>Happy Employees</p>
+    </div>
+    <div class="stat">
+      <h2 class="counter" data-target="95">0</h2>
+      <p>Success Rate %</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose Job Finder?</h2>
+
+    <div class="features-container">
+
+      <div class="feature">
+        <i class="fas fa-search"></i>
+        <h3>Smart Search</h3>
+        <p>Find jobs that match your skills</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-bolt"></i>
+        <h3>Quick Apply</h3>
+        <p>Apply in seconds</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-bell"></i>
+        <h3>Job Alerts</h3>
+        <p>Get notified instantly</p>
+      </div>
+
+      <div class="feature">
+        <i class="fas fa-chart-line"></i>
+        <h3>Career Insights</h3>
+        <p>Grow your career smartly</p>
+      </div>
+
+    </div>
+  </section>
+
+  <h1>Available Jobs</h1>
+  <section class="job-list"></section>
+  <section class="actions">
+    <h2>User Actions</h2>
+
+    <div class="actions-container">
+      <div class="action-card">
+        <i class="fas fa-briefcase"></i>
+        <h3>View Applied Jobs</h3>
+        <a href="my-applications.html" id="userApplicationsLink" style="display: none;">Go →</a>
+        <a href="applied_jobs.html" id="adminApplicationsLink" style="display: none;">Go →</a>
+      </div>
+      <div class="action-card admin-only-card" id="adminActionsCard" style="display: none;">
+            <i class="fas fa-user-shield"></i>
+            <h3>Admin Actions</h3>
+            <a href="admin_dashboard.html">Go to Dashboard →</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        
+        const userLink = document.getElementById("userApplicationsLink");
+        const adminLink = document.getElementById("adminApplicationsLink");
+        const adminCard = document.getElementById("adminActionsCard");
+        
+        const userNavLink = document.getElementById("userNavLink");
+        const adminNavLink = document.getElementById("adminNavLink");
+        const adminDashboardNav = document.getElementById("adminDashboardNav");
+        const adminJobsNav = document.getElementById("adminJobsNav");
+        
+        if (currentUser) {
+            if (currentUser.accountType === "admin") {
+                if (adminLink) adminLink.style.display = "inline-block";
+                if (adminCard) adminCard.style.display = "block";
+                if (userLink) userLink.style.display = "none";
+                
+                if (adminNavLink) adminNavLink.style.display = "inline-block";
+                if (adminDashboardNav) adminDashboardNav.style.display = "inline-block";
+                if (adminJobsNav) adminJobsNav.style.display = "inline-block";
+                if (userNavLink) userNavLink.style.display = "none";
+                
+            } else {
+                if (userLink) userLink.style.display = "inline-block";
+                if (adminLink) adminLink.style.display = "none";
+                if (adminCard) adminCard.style.display = "none";
+                
+                if (userNavLink) userNavLink.style.display = "inline-block";
+                if (adminNavLink) adminNavLink.style.display = "none";
+                if (adminDashboardNav) adminDashboardNav.style.display = "none";
+                if (adminJobsNav) adminJobsNav.style.display = "none";
+            }
+        } else {
+            if (userLink) userLink.style.display = "none";
+            if (adminLink) adminLink.style.display = "none";
+            if (adminCard) adminCard.style.display = "none";
+            if (userNavLink) userNavLink.style.display = "none";
+            if (adminNavLink) adminNavLink.style.display = "none";
+            if (adminDashboardNav) adminDashboardNav.style.display = "none";
+            if (adminJobsNav) adminJobsNav.style.display = "none";
+        }
+    })();
+</script>
+
+
+  <section class="testimonials">
+    <h2>What Our Users Say</h2>
+
+    <div class="testimonials-container">
+
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Great platform to find jobs quickly!"</p>
+      </div>
+
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Simple and easy to use. Found my dream job here!"</p>
+      </div>
+
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>"Best job search experience ever!"</p>
+      </div>
+
+    </div>
+  </section>
+  <footer class="footer">
+
+    <div class="footer-container">
+
+      <!-- About -->
+      <div class="footer-section">
+        <h3>Job Finder</h3>
+        <p>Find your dream job with ease</p>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p><i class="fas fa-envelope"></i> email@example.com</p>
+        <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+      </div>
+
+      <!-- Social -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Job Finder. All rights reserved.</p>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>

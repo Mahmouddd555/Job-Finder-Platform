@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/style2.css">
+    <script src="js/add-job.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Add Job</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">🎯 Job Finder</a>
+            </div>
+            <div class="nav-links">
+                <a href="applied_jobs.html"> Candidates |</a>
+                <a href="admin_dashboard.html"> Admin Dashboard |</a>
+                <a href="admin-jobs.html"> Manage Jobs |</a> 
+            </div>
+            <div id="authArea" class="auth">
+                <a href="login.html" class="login">Login | </a>
+                <a href="signup.html" class="signup"> Sign Up</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <h1 id="page-title">Add New Job</h1> <br>
+    
+    <form id="add-job-form" action="#" method="post" enctype="multipart/form-data" 
+    style="width: 100%; margin: auto;">
+        
+        <label for="job-id">Job ID: </label>
+        <input type="text" id="job-id" name="job-id"placeholder="Auto-generated ID" disabled 
+        style="width: 30%;"><br>
+
+        <label for="job-title">Job Title: </label>
+        <input type="text" id="job-title" name="job-title" placeholder="Enter job Title" required 
+        style="width: 30%;"><br>
+
+        <label for="salary">Salary: </label>
+        <input type="number" id="salary" name="salary" placeholder="Enter salary" required 
+        style="width: 30%;"><br>
+
+        <label for="company">Company Name: </label>
+        <input type="text" id="company" name="company" placeholder="Enter company" required
+         style="width: 30%;"><br>
+        
+
+        <label for="job-status">Job Status: </label>
+        <select id="job-status" name="job-status" style="width: 15%;">
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+        </select><br>
+
+        <label for="description">Job Description: </label><br>
+        <textarea id="description" name="description" placeholder="Enter job description" required 
+        style="width: 100%;" class="auto-resize"></textarea><br>
+
+        <label for="job-image">Job Image: </label>
+        <input type="file" id="job-image" name="job-image" accept="image/*" style="width: 50%;">
+        <small style="display: block; margin-top: 5px; color: #666;">Leave empty to use default image</small>
+        
+        <div id="image-preview" style="margin: 15px 0; display: none;">
+            <img id="preview-img" src="#" alt="Preview" style="max-width: 150px; border-radius: 10px; border: 2px solid #6c5ce7;">
+        </div>
+
+        <input id="add-job-submit" type="submit" value="Add Job">
+    </form>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Job Finder</h3>
+                <p>Find your dream job with ease</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Job Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("job-image").addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const preview = document.getElementById("image-preview");
+                    const img = document.getElementById("preview-img");
+                    img.src = event.target.result;
+                    preview.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+    <script>
+    // Auto-resize textarea based on content
+    const textareas = document.querySelectorAll('.auto-resize, #description');
+    
+    textareas.forEach(textarea => {
+        textarea.style.resize = 'none';
+        
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        }
+        
+        textarea.addEventListener('input', autoResize);
+        
+        setTimeout(() => {
+            autoResize.call(textarea);
+        }, 100);
+    });
+</script>
+</body>
+
+</html>

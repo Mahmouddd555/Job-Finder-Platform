@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style/style2.css">
+    <script src="js/signup.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+
+
+<body>
+
+    <center>
+        <h1>Create New Account</h1>
+
+        <form id="signupForm">
+    
+    
+    <label>Username:</label><br>
+    <input type="text" id="username" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" id="password" required><br><br>
+
+    <label>Confirm Password:</label><br>
+    <input type="password" id="confirm_password" required><br><br>
+
+    <div class="account-type-group">
+        <p>Choose Account Type:</p> <br>
+        <div class="radio-options">
+            <label class="radio-card">
+                <input type="radio" name="user-type" value="user" checked>
+                <div class="card-content">
+                    <span>User</span>
+                </div>
+            </label>
+
+            <label class="radio-card">
+                <input type="radio" name="user-type" value="admin">
+                <div class="card-content">
+                    <span>Admin</span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <label>Company Name (if admin):</label><br>
+    <input type="text" id="company_name"><br><br>
+
+    <input type="submit" value="Sign Up">
+
+    <p class="form-footer">
+        Already have an account? <a href="login.html">Login</a>
+    </p>
+</form>
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-section">
+                <h3>Job Finder</h3>
+                <p>Find your dream job with ease</p>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            </div>
+
+            <!-- Social -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Job Finder. All rights reserved.</p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

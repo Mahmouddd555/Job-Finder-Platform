@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Applied Users | Admin Only</title>
+  <link rel="stylesheet" href="style/style2.css">
+  <script src="js/appliedjobs.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser || currentUser.accountType !== "admin") {
+        alert("⛔ Access Denied! Admin only.");
+        window.location.href = "index.html";
+      }
+    });
+  </script>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">🎯 Job Finder</a>
+      </div>
+      <div class="nav-links">
+        <a href="admin_dashboard.html"> Admin Dashboard |</a>
+        <a href="admin-jobs.html"> Manage Jobs |</a>
+      </div>
+      <div id="authArea" class="auth">
+        <a href="login.html" class="login">Login |</a>
+        <a href="signup.html" class="signup"> Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="applied-header">
+    <h1><i class="fas fa-users"></i> Candidates</h1>
+    <p>View and manage applicants for your company's jobs</p>
+  </div>
+
+  <div class="applied-stats">
+    <div class="applied-stat-card">
+      <i class="fas fa-file-signature"></i>
+      <div class="stat-content">
+        <h3 id="totalApplications">0</h3>
+        <p>Total Applications</p>
+      </div>
+    </div>
+    <div class="applied-stat-card">
+      <i class="fas fa-briefcase"></i>
+      <div class="stat-content">
+        <h3 id="uniqueJobsCount">0</h3>
+        <p>Your Jobs</p>
+      </div>
+    </div>
+    <div class="applied-stat-card">
+      <i class="fas fa-clock"></i>
+      <div class="stat-content">
+        <h3 id="pendingCount">0</h3>
+        <p>Pending</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filter-container">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="pending">Pending</button>
+    <button class="filter-btn" data-filter="approved">Accepted</button>
+    <button class="filter-btn" data-filter="rejected">Rejected</button>
+  </div>
+
+  <div id="appliedJobsContainer" class="applications-container"></div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Job Finder</h3>
+        <p>Find your dream job with ease</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p><i class="fas fa-envelope"></i> email@example.com</p>
+        <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Job Finder. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
