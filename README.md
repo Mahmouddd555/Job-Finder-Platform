@@ -63,7 +63,7 @@ This project was built as part of a web technology assignment to practice:
 
 - Developed as a university project by
 -  Mahmoud Ahmed : www.linkedin.com/in/mahmoud-ahmed-93613b338
--  Mazen Nasser : linkedin.com/in/mazen-nasser-5a65a33a9
+-  Mazen Nasser : www.linkedin.com/in/mazen-nasser-5a65a33a9
 ---
 
 ## ⭐ Notes
